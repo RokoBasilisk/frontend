@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Landing from "./components/layout/Landing";
+import Auth from "./views/Auth";
+import NotFound from "./components/layout/NotFound";
+import AuthContextProvider from "./contexts/AuthContext";
+import ProductContextProvider from "./contexts/ProductContext";
+import Dashboard from "./views/Dashboard";
+import PrivateRoute from "./components/routing/PrivateRoute";
+import NavbarMenu from "./components/layout/NavbarMenu";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ProductContextProvider>
+      <AuthContextProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="login" element={<Auth authRoute="login" />} />
+            <Route path="register" element={<Auth authRoute="register" />} />
+            <Route
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <NavbarMenu activate="dashboard" />
+                  <Dashboard />
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </AuthContextProvider>
+    </ProductContextProvider>
   );
 }
 
