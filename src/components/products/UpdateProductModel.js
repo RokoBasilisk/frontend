@@ -21,7 +21,7 @@ const UpdateProductModel = () => {
   const [IMAGE, setIMAGE] = useState("");
 
   const { title, description, price, image } = updateProduct;
-
+  console.log(updateProduct);
   const onChangeUpdatedProductForm = (event) => {
     if (event.target.name !== "image")
       setUpdateProduct({
@@ -44,8 +44,9 @@ const UpdateProductModel = () => {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    console.log(updateProduct);
+    console.log("Test :" + updateProduct.imgcheck);
     if (updateProduct.imgcheck === "") {
+      console.log("1");
       const { message, success } = await updateProducts(updateProduct);
       resetUpdateProductData();
       setShowToast({
@@ -54,6 +55,7 @@ const UpdateProductModel = () => {
         type: success ? "success" : "danger",
       });
     } else {
+      console.log("2");
       const { message, success } = await updateOutProducts(updateProduct);
       resetUpdateProductData();
       setShowToast({
@@ -66,11 +68,15 @@ const UpdateProductModel = () => {
 
   const resetUpdateProductData = () => {
     setUpdateProduct({
+      ...updateProduct,
       title: title,
       description: description,
       price: price,
       image: image,
+      imgcheck: "",
     });
+    setIMAGE("");
+    console.log(updateProduct);
     setShowUpdateProductModal(false);
   };
 
@@ -82,6 +88,7 @@ const UpdateProductModel = () => {
       <Form onSubmit={onSubmit}>
         <Modal.Body>
           <Form.Group>
+            <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
               placeholder="Title"
@@ -90,11 +97,11 @@ const UpdateProductModel = () => {
               value={title}
               onChange={onChangeUpdatedProductForm}
             />
-            <Form.Text id="title-help" muted>
-              Required
-            </Form.Text>
           </Form.Group>
           <Form.Group>
+            <Form.Label id="title-help" muted>
+              Description
+            </Form.Label>
             <Form.Control
               as="textarea"
               row={3}

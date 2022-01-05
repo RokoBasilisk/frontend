@@ -7,6 +7,7 @@ import {
   DELETE_PRODUCT,
   UPDATE_PRODUCT,
   FIND_PRODUCT,
+  FILTER_PRODUCT,
 } from "./constant";
 import axios from "axios";
 
@@ -51,6 +52,16 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
+  const filterProducts = async (query) => {
+    const response = await axios.post(`${apiUrl}/products/filter/${query}`);
+    if (response.data.success) {
+      dispatch({
+        type: FILTER_PRODUCT,
+        payload: response.data.Products,
+      });
+    }
+  };
+
   // Find product when user updating product
   const findProducts = (productId) => {
     const product = productState.product.find(
@@ -76,19 +87,6 @@ const ProductContextProvider = ({ children }) => {
     }
   };
 
-  // const toDataURL = (url) =>
-  //   fetch(url)
-  //     .then((response) => response.blob())
-  //     .then(
-  //       (blob) =>
-  //         new Promise((resolve, reject) => {
-  //           const reader = new FileReader();
-  //           reader.onloadend = () => resolve(reader.result);
-  //           reader.onerror = reject;
-  //           reader.readAsDataURL(blob);
-  //         })
-  //     );
-
   const updateProducts = async (updateProduct) => {
     try {
       const formData = new FormData();
@@ -100,7 +98,6 @@ const ProductContextProvider = ({ children }) => {
         `${apiUrl}/products/${updateProduct._id}`,
         formData
       );
-      console.log(response.data.Products);
       if (response.data.success) {
         dispatch({
           type: UPDATE_PRODUCT,
@@ -151,7 +148,6 @@ const ProductContextProvider = ({ children }) => {
       formData.append("description", newProduct.description);
       formData.append("price", newProduct.price);
       formData.append("image", newProduct.image);
-      console.log(formData);
       const response = await axios.post(`${apiUrl}/products`, formData);
       console.log(response);
       if (response.data.success) {
@@ -192,6 +188,7 @@ const ProductContextProvider = ({ children }) => {
     findProducts,
     updateProducts,
     updateOutProducts,
+    filterProducts,
   };
 
   //return provider

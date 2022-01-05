@@ -20,16 +20,18 @@ const NavbarMenu = ({ activate }) => {
 
   return (
     <Navbar expand="lg" bg="primary" variant="dark" className="shadow">
-      <Navbar.Brand className="font-weight-bolder text-white">
-        <img
-          src={LearnItlogo}
-          alt="LearnitLogo"
-          width="32"
-          height="32"
-          className="mr-2"
-        />
-        LearnIt
-      </Navbar.Brand>
+      <Nav.Link to="/dashboard" as={Link}>
+        <Navbar.Brand className="font-weight-bolder text-white">
+          <img
+            src={LearnItlogo}
+            alt="LearnitLogo"
+            width="32"
+            height="32"
+            className="mr-2"
+          />
+          LearnIt
+        </Navbar.Brand>
+      </Nav.Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
@@ -43,11 +45,19 @@ const NavbarMenu = ({ activate }) => {
           </Nav.Link>
           <Nav.Link
             className="font-weight-bolder text-write"
-            to="/about"
+            to="/bills"
             as={Link}
-            active={activate === "about" ? true : false}
+            active={activate === "bills" ? true : false}
           >
-            About
+            Bills
+          </Nav.Link>
+          <Nav.Link
+            className="font-weight-bolder text-write"
+            to="/setting"
+            as={Link}
+            active={activate === "setting" ? true : false}
+          >
+            Setting
           </Nav.Link>
         </Nav>
 

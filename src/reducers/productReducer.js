@@ -5,6 +5,7 @@ import {
   DELETE_PRODUCT,
   UPDATE_PRODUCT,
   FIND_PRODUCT,
+  FILTER_PRODUCT,
 } from "../contexts/constant";
 
 export const productReducer = (state, action) => {
@@ -24,6 +25,8 @@ export const productReducer = (state, action) => {
       };
     case FIND_PRODUCT:
       return { ...state, productSelect: payload };
+    case FILTER_PRODUCT:
+      return { ...state, product: payload };
     case UPDATE_PRODUCT:
       const newProducts = state.product.map((producthold) =>
         producthold._id === payload._id ? payload : producthold

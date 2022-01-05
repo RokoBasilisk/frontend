@@ -2,6 +2,7 @@ import AddIcon from "../assets/plus-circle-fill.svg";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../contexts/AuthContext";
 import { ProductContext } from "../contexts/ProductContext";
+import SearchBar from "../components/layout/SearchBar";
 import {
   Spinner,
   OverlayTrigger,
@@ -43,6 +44,7 @@ const Dashboard = () => {
         </div>
       );
     } else {
+      console.log(productLoading);
       if (product.length === 0) {
         body = (
           <>
@@ -90,6 +92,7 @@ const Dashboard = () => {
   return (
     <>
       <h1>Dashboard</h1>
+      <SearchBar/>
       {body}
       <AddProductModel />
       {productSelect !== null && <UpdateProductModel />}
