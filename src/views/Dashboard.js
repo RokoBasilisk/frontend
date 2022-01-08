@@ -61,6 +61,7 @@ const Dashboard = () => {
           </>
         );
       } else {
+        console.log(product);
         body = (
           <>
             <Row
@@ -68,6 +69,7 @@ const Dashboard = () => {
               className="row-cols-1 row-cols-md-3 g-4 mx-auto mt-3"
             >
               {product.map((products) => {
+                console.log(products);
                 return <Products products={products} />;
               })}
             </Row>
@@ -92,7 +94,7 @@ const Dashboard = () => {
   return (
     <>
       <h1>Dashboard</h1>
-      <SearchBar/>
+      <SearchBar />
       {body}
       <AddProductModel />
       {productSelect !== null && <UpdateProductModel />}

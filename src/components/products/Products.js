@@ -8,7 +8,7 @@ const Products = ({
   let test = new Date(date);
   return (
     <Col key={_id} className="my-2">
-      <Card className="shadow" border="success">
+      <Card className="shadow" border="success" style={{ height: "100%" }}>
         <Card.Body>
           <Card.Title>
             <Row>
@@ -26,7 +26,7 @@ const Products = ({
                 <p className="post-description">
                   {test.toString().substr(0, 24)}
                 </p>
-                <Badge pill variant="secondary">
+                <Badge pill variant="secondary" className="text-bottom">
                   $ {price}
                 </Badge>
               </Col>
