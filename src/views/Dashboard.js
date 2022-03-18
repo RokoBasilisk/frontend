@@ -44,7 +44,6 @@ const Dashboard = () => {
         </div>
       );
     } else {
-      console.log(productLoading);
       if (product.length === 0) {
         body = (
           <>
@@ -58,10 +57,20 @@ const Dashboard = () => {
                 <Button variant="primary">LearnIt!</Button>
               </Card.Body>
             </Card>
+            <OverlayTrigger
+              placement="left"
+              overlay={<Tooltip>Add a new Product</Tooltip>}
+            >
+              <Button
+                className="btn-floating"
+                onClick={setShowAddProductModal.bind(this, true)}
+              >
+                <img src={AddIcon} alt="add-product" width="60" height="60" />
+              </Button>
+            </OverlayTrigger>
           </>
         );
       } else {
-        console.log(product);
         body = (
           <>
             <Row
@@ -69,7 +78,6 @@ const Dashboard = () => {
               className="row-cols-1 row-cols-md-3 g-4 mx-auto mt-3"
             >
               {product.map((products) => {
-                console.log(products);
                 return <Products products={products} />;
               })}
             </Row>
@@ -93,7 +101,6 @@ const Dashboard = () => {
 
   return (
     <>
-      <h1>Dashboard</h1>
       <SearchBar />
       {body}
       <AddProductModel />

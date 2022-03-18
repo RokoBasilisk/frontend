@@ -61,7 +61,6 @@ const Bills = () => {
   return (
     <>
       {bill && <InfoBar bills={bill} />}
-      <h3>Bills</h3>
       {body}
     </>
   );

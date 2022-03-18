@@ -5,8 +5,6 @@ export const billReducer = (state, action) => {
 
   switch (type) {
     case BILL_REDUCER_LOAD_BILL:
-      console.log("9999999");
-      console.log(payload);
       return { ...state, bill: payload, billLoading: false };
     case UPDATE_BILL:
       const newBills = state.bill.map((billhold) =>

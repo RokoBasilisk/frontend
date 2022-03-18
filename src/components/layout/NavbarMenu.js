@@ -20,21 +20,17 @@ const NavbarMenu = ({ activate }) => {
 
   return (
     <Navbar expand="lg" bg="primary" variant="dark" className="shadow">
-      <Nav.Link to="/dashboard" as={Link}>
-        <Navbar.Brand className="font-weight-bolder text-white">
-          <img
-            src={LearnItlogo}
-            alt="LearnitLogo"
-            width="32"
-            height="32"
-            className="mr-2"
-          />
-          LearnIt
-        </Navbar.Brand>
-      </Nav.Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
+          <Nav.Link
+            className="font-weight-bolder text-write"
+            to="/view"
+            as={Link}
+            active={activate === "view" ? true : false}
+          >
+            View
+          </Nav.Link>
           <Nav.Link
             className="font-weight-bolder text-write"
             to="/dashboard"

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Row, Col, Card, Badge, Image, Container } from "react-bootstrap";
 import Billitem from "../products/BillItem";
 import BillActionButton from "../layout/BillActionButton";
+import avatar from "../../assets/3551739.jpg";
 
 const Bill = ({ bills: { customer, date, products, total, _id, status } }) => {
   let test = new Date(date);
@@ -29,13 +30,10 @@ const Bill = ({ bills: { customer, date, products, total, _id, status } }) => {
                     <Col className="bill-date">
                       {test.toString().substr(0, 24)}
                     </Col>
+                    <Col className="bill-address">13 St Marks street</Col>
                   </Col>
                   <Col sm={4}>
-                    <Image
-                      src={`http://localhost:5000/${item.image}`}
-                      alt={item.title}
-                      className="bill-image"
-                    />
+                    <img className="bill-image" src={avatar} />
                   </Col>
                 </Row>
               </Col>

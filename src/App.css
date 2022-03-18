@@ -219,3 +219,55 @@ h2 {
   flex-direction: column;
   justify-content: space-between;
 }
+.Container {
+  margin: 10px 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.Chart-row {
+  width: 40%;
+}
+.chart {
+  box-shadow: 0px 0px 4px #B5B5B7;
+}
+.chart:nth-child(1) {
+  margin-bottom: 20px;
+}
+.chart > canvas {
+  background: rgba(255, 255, 255, 0.5);
+  transition-duration: 1.6s;
+}
+.Info-row {
+  width: 50%;
+  margin-left: 20px;
+}
+.Info-Col {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 15px 15px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px #B5B5B7;
+}
+.Info-Col:nth-child(1) {
+  margin-bottom: 10px;
+}
+.Info-icon {
+  color: white;
+  padding: 20px;
+  border-radius: 100%;
+}
+.upper {
+  font-weight: bold;
+  font-size: 22px;
+  color: #000;
+}
+.lower {
+  font-weight: bold;
+  color: rgb(121, 118, 118);
+  font-size: 12px;
+}
